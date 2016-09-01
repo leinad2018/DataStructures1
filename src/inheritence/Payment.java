@@ -1,8 +1,20 @@
 package inheritence;
 
+/**
+ * A Payment
+ * 
+ * @author Daniel Anderson
+ * 
+ */
 public class Payment {
 	private double payment = 0;
 
+	/**
+	 * Constructs a payment using the inputted amount
+	 * 
+	 * @param amount
+	 *            The amount of the payment
+	 */
 	public Payment(double amount) {
 		payment = amount;
 	}
@@ -20,18 +32,28 @@ public class Payment {
 	 * Sets the amount of the payment
 	 * 
 	 * @param payment
-	 *            : the amount to pay
+	 *            The amount to pay
 	 */
 	public void setPayment(double payment) {
 		this.payment = payment;
 	}
 
+	/**
+	 * Prints the amount of the payment to the console
+	 */
 	public void paymentDetails() {
 		System.out.println("The payment amount is: " + payment);
 	}
 
+	/**
+	 * Checks if the other payment is of the same type and amount of this object
+	 * 
+	 * @param otherObject
+	 *            The object to compare
+	 */
 	public boolean equals(Object otherObject) {
-		if (getClass() == otherObject.getClass() && ((Payment) otherObject).getPayment() == this.getPayment())
+		if (getClass() == otherObject.getClass()
+				&& ((Payment) otherObject).getPayment() == this.getPayment())
 			return true;
 		else
 			return false;
