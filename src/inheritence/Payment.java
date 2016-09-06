@@ -52,6 +52,9 @@ public class Payment {
 	 *            The object to compare
 	 */
 	public boolean equals(Object otherObject) {
+		if(otherObject == null){
+			return false;
+		}
 		if (getClass() == otherObject.getClass()
 				&& ((Payment) otherObject).getPayment() == this.getPayment())
 			return true;
