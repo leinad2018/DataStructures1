@@ -10,17 +10,17 @@ public class FileWriter {
 
 	/**
 	 * @param args
-	 * @throws FileNotFoundException 
 	 */
 	public static void main(String[] args){
-		File theFile;
+		Scanner input;
 		try{
-			theFile = new File("H:/HelloWorld.txt");
+			File theFile = new File("H:/HelloWorld.txt");
+			input = new Scanner(theFile);
 		}catch(Exception e){
 			System.out.println("File could not be found");
-			theFile = new File();
+			input = new Scanner(System.in);
 		}
-		Scanner input = new Scanner(theFile);
+		
 		while(input.hasNextLine()){
 			System.out.println(input.nextLine());
 		}
