@@ -21,7 +21,7 @@ public class CashPayment extends Payment {
 	/**
 	 * returns the details for the payment
 	 * 
-	 * @return payment details
+	 * 
 	 */
 	public void paymentDetails() {
 		System.out.println("The payment is " + super.getPayment() + " in cash");
