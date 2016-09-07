@@ -39,7 +39,7 @@ public class Payment {
 	}
 
 	/**
-	 * Prints the amount of the payment to the console
+	 * Prints the payment details to the console
 	 */
 	public void paymentDetails() {
 		System.out.println("The payment amount is: " + payment);
