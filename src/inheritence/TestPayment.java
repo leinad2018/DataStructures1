@@ -14,7 +14,7 @@ public class TestPayment {
 		System.out.println();
 		if(cash2.equals(cash1)){
 			System.out.println("cash1 and cash2 are equal");
-		}
+		} 
 		if(card1.equals(cash1)){
 			System.out.println("card1 and cash1 are equal");
 		}
