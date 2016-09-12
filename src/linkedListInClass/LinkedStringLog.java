@@ -104,8 +104,33 @@ public class LinkedStringLog implements StringLogInterface {
 		} else {
 			return false;
 		}
-		if (this.size() != other.size()) {
+		
+		String[] list1 = new String[size()];
+		String[] list2 = new String[other.size()];
+		
+		if(list1.length != list2.length){
 			return false;
 		}
+		
+		LLStringNode temp = log;
+		LLStringNode temp2 = other.log;
+		for(int i = 0; i < list1.length; i++){
+			list1[i] = temp.getInfo();
+			list2[i] = temp2.getInfo();
+			temp = temp.getLink();
+			temp2 = temp2.getLink();
+		}
+		
+		MergeSort.mergesort(list1, 0, list1.length);
+		MergeSort.mergesort(list2, 0, list2.length);
+		
+		for(int i = 0; i < list1.length; i++){
+			System.out.println(list1[i] + " " + list2[i]);
+			if(!(list1[i].equals(list2[i]))){
+				return false;
+			}
+		}
+
+		return true;
 	}
 }
