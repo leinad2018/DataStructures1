@@ -1,5 +1,7 @@
 package linkedListInClass;
 
+import java.util.Arrays;
+
 public class LinkedStringLog implements StringLogInterface {
 	protected LLStringNode log; // reference to first node of linked
 								// list that holds the StringLog strings
@@ -104,8 +106,36 @@ public class LinkedStringLog implements StringLogInterface {
 		} else {
 			return false;
 		}
-		if (this.size() != other.size()) {
+		
+		int length = size();
+		if(other.size() != length){
 			return false;
 		}
+		
+		String[] list1 = new String[length];
+		String[] list2 = new String[length];
+		
+		LLStringNode tempNode1 = log;
+		LLStringNode tempNode2 = other.log;
+		
+		for(int i = 0; i < length; i++){
+			list1[i] = tempNode1.getInfo();
+			tempNode1 = tempNode1.getLink();
+			
+			list2[i] = tempNode2.getInfo();
+			tempNode2 = tempNode2.getLink();
+		}
+		
+		Arrays.sort(list1);
+		Arrays.sort(list2);
+		
+		for(int i = 0; i < length; i++ ){
+			if(list1[i] != list2[i]){
+				return false;
+			}
+		}
+		
+		
+		return true;
 	}
 }
