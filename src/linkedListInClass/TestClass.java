@@ -12,7 +12,10 @@ public class TestClass {
 		log2.insert("hello");
 		log2.insert("hello");
 		
+		
+		
 		System.out.println(log1.equals(log2));
+		System.out.println(log1);
 	}
 
 }

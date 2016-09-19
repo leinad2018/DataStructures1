@@ -91,6 +91,32 @@ public class LinkedStringLog implements StringLogInterface {
 		return logString;
 	}
 
+	public void remove(String element) throws Exception {
+		if (this.contains(element)) {
+			if (log == null)
+				throw new Exception("empty list");
+			LLStringNode toRemove;
+			if (log.getInfo().equalsIgnoreCase(element)) {
+				toRemove = log;
+				log = log.getLink();
+				toRemove.setLink(null);
+				return;
+			}
+
+			LLStringNode tempNode = log;
+			while (tempNode != null) {
+				if (tempNode.getLink().getInfo().equalsIgnoreCase(element)) {
+					toRemove = tempNode.getLink();
+					tempNode.setLink(tempNode.getLink().getLink());
+					toRemove.setLink(null);
+					return;
+				}
+				tempNode = tempNode.getLink();
+			}
+		}
+		throw new Exception("Node not found");
+	}
+
 	public void insertLast(String element) {
 		LLStringNode tempNode = log;
 		while (tempNode.getLink() != null) {
@@ -106,36 +132,35 @@ public class LinkedStringLog implements StringLogInterface {
 		} else {
 			return false;
 		}
-		
+
 		int length = size();
-		if(other.size() != length){
+		if (other.size() != length) {
 			return false;
 		}
-		
+
 		String[] list1 = new String[length];
 		String[] list2 = new String[length];
-		
+
 		LLStringNode tempNode1 = log;
 		LLStringNode tempNode2 = other.log;
-		
-		for(int i = 0; i < length; i++){
+
+		for (int i = 0; i < length; i++) {
 			list1[i] = tempNode1.getInfo();
 			tempNode1 = tempNode1.getLink();
-			
+
 			list2[i] = tempNode2.getInfo();
 			tempNode2 = tempNode2.getLink();
 		}
-		
+
 		Arrays.sort(list1);
 		Arrays.sort(list2);
-		
-		for(int i = 0; i < length; i++ ){
-			if(list1[i] != list2[i]){
+
+		for (int i = 0; i < length; i++) {
+			if (list1[i] != list2[i]) {
 				return false;
 			}
 		}
-		
-		
+
 		return true;
 	}
 }
