@@ -1,5 +1,7 @@
 package linkedListInClass;
 
+import java.util.Arrays;
+
 public class LinkedStringLog implements StringLogInterface {
 	protected LLStringNode log; // reference to first node of linked
 								// list that holds the StringLog strings
@@ -89,6 +91,32 @@ public class LinkedStringLog implements StringLogInterface {
 		return logString;
 	}
 
+	public void remove(String element) throws Exception {
+		if (this.contains(element)) {
+			if (log == null)
+				throw new Exception("empty list");
+			LLStringNode toRemove;
+			if (log.getInfo().equalsIgnoreCase(element)) {
+				toRemove = log;
+				log = log.getLink();
+				toRemove.setLink(null);
+				return;
+			}
+
+			LLStringNode tempNode = log;
+			while (tempNode != null) {
+				if (tempNode.getLink().getInfo().equalsIgnoreCase(element)) {
+					toRemove = tempNode.getLink();
+					tempNode.setLink(tempNode.getLink().getLink());
+					toRemove.setLink(null);
+					return;
+				}
+				tempNode = tempNode.getLink();
+			}
+		}
+		throw new Exception("Node not found");
+	}
+
 	public void insertLast(String element) {
 		LLStringNode tempNode = log;
 		while (tempNode.getLink() != null) {
@@ -104,29 +132,31 @@ public class LinkedStringLog implements StringLogInterface {
 		} else {
 			return false;
 		}
-		
-		String[] list1 = new String[size()];
-		String[] list2 = new String[other.size()];
-		
-		if(list1.length != list2.length){
+
+		int length = size();
+		if (other.size() != length) {
 			return false;
 		}
-		
-		LLStringNode temp = log;
-		LLStringNode temp2 = other.log;
-		for(int i = 0; i < list1.length; i++){
-			list1[i] = temp.getInfo();
-			list2[i] = temp2.getInfo();
-			temp = temp.getLink();
-			temp2 = temp2.getLink();
+
+		String[] list1 = new String[length];
+		String[] list2 = new String[length];
+
+		LLStringNode tempNode1 = log;
+		LLStringNode tempNode2 = other.log;
+
+		for (int i = 0; i < length; i++) {
+			list1[i] = tempNode1.getInfo();
+			tempNode1 = tempNode1.getLink();
+
+			list2[i] = tempNode2.getInfo();
+			tempNode2 = tempNode2.getLink();
 		}
-		
-		MergeSort.mergesort(list1, 0, list1.length);
-		MergeSort.mergesort(list2, 0, list2.length);
-		
-		for(int i = 0; i < list1.length; i++){
-			System.out.println(list1[i] + " " + list2[i]);
-			if(!(list1[i].equals(list2[i]))){
+
+		Arrays.sort(list1);
+		Arrays.sort(list2);
+
+		for (int i = 0; i < length; i++) {
+			if (list1[i] != list2[i]) {
 				return false;
 			}
 		}

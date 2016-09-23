@@ -1,18 +1,21 @@
 package linkedListInClass;
 
 public class TestClass {
-
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		LinkedStringLog log1 = new LinkedStringLog("bob");
 		LinkedStringLog log2 = new LinkedStringLog("fred");
 		
-		log1.insert("a");
-		log1.insert("v");
-		log1.insert("b");
-		log2.insert("v");
-		log2.insert("b");
-		log2.insert("a");
+		log1.insert("hello");
+		log1.insert("hi");
+		log1.insert("hi");
+		log2.insert("hi");
+		log2.insert("hello");
+		log2.insert("hello");
+		
+		
+		
 		System.out.println(log1.equals(log2));
+		System.out.println(log1);
 	}
 
 }
