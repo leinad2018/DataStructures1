@@ -29,8 +29,9 @@ public class CircLinkedUnbndQueue<T> implements UnboundedQueueInterface<T> {
 			rear = new LLNode<T>(element);
 			rear.setLink(rear);
 		}else{
-			LLNode<T> tempNode = new LLNode<T>(element);
-			rear.setLink();
+			LLNode<T> newNode = new LLNode<T>(element);
+			newNode.setLink(rear.getLink());
+			rear.setLink(newNode);
 			rear = rear.getLink();
 		}
 	}
