@@ -3,8 +3,6 @@ package ch03.stacks;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
-import org.omg.CORBA.DynAnyPackage.InvalidValue;
-
 public class LispEvaluator {
 	private LinkedStack<String> numbers;
 	private LinkedStack<Character> operators;
@@ -59,37 +57,6 @@ public class LispEvaluator {
 				}
 			}
 		}
-
-		// for (int i = 0; i < stuff.length(); i++) {
-		// char temp = stuff.charAt(i);
-		//
-		// if (temp == ' ') {
-		// if (buffer.length() > 0) {
-		// System.out.println(buffer);
-		// numbers.push(buffer);
-		// buffer = "";
-		// }
-		// } else if (temp == ')') {
-		// ArrayList<String> toEv = new ArrayList<String>();
-		//
-		// while (!(numbers.top().equals("("))) {
-		// toEv.add(numbers.top());
-		// numbers.pop();
-		// }
-		// numbers.pop();
-		//
-		// char op = operators.top();
-		// operators.pop();
-		// numbers.push(doesMath(op, toEv));
-		//
-		// } else if (operations.contains(temp + "")) {
-		// operators.push(temp);
-		//
-		// } else {
-		// buffer += temp;
-		//
-		// }
-		// }
 		double result = Double.parseDouble(numbers.top());
 		numbers.pop();
 		return result;
