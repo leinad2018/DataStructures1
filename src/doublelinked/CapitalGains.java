@@ -1,18 +1,29 @@
 package doublelinked;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class CapitalGains {
-	private DList companies;
-	
-	public CapitalGains(String stocksFilePath, String transFilePath) throws FileNotFoundException{
+	private DList<String> transactions;
+	private String companies;
+
+	public CapitalGains(String stocksFilePath, String transFilePath) throws Exception {
 		getFiles(stocksFilePath, transFilePath);
 	}
-	
-	private void getFiles(String stocks, String transactions) throws FileNotFoundException{
-		Scanner stocksIn = new Scanner(new File(stocks));
-		
+
+	private void getFiles(String stocks, String transaction) throws Exception {
+		Scanner input = new Scanner(new File(stocks));
+		while (input.hasNextLine()) {
+			companies += input.nextLine();
+		}
+		input = new Scanner(new File(transaction));
+		while (input.hasNextLine()) {
+			String next = input.nextLine();
+			if (companies.contains(next)) transactions.addToFront(next);
+			else {
+				input.close();
+				throw new Exception("Invalid Transaction Added");
+			}
+		}
 	}
 }
