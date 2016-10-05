@@ -22,7 +22,7 @@ public class DLLNode<T> extends LLNode<T>
     this.back = back;
   }
 
-  public DLLNode getBack()
+  public DLLNode<T> getBack()
   // Returns back link of this DLLNode.
   {
     return back;

@@ -90,7 +90,7 @@ public class DList<T> {
 		DLLNode<T> v = header;
 		while (v != null) {
 			System.out.println(v.getInfo());
-			v = (DLLNode) v.getLink();
+			v = (DLLNode<T>) v.getLink();
 		}
 
 	}
@@ -102,8 +102,8 @@ public class DList<T> {
 			header = null;
 			trailer = null;
 		}else{
-		trailer =(DLLNode) trailer.getBack();
-		DLLNode<T> temp = (DLLNode) trailer.getLink();
+		trailer = trailer.getBack();
+		DLLNode<T> temp = (DLLNode<T>) trailer.getLink();
 		temp.setBack(null);
 		trailer.setLink(null);
 		}
@@ -129,7 +129,13 @@ public class DList<T> {
 		}
 		while(search != null){
 			if(search.getInfo().equals(element)){
-				
+				DLLNode<T> temp = (DLLNode<T>)search.getLink();
+				temp.setBack(search.getBack());
+				temp = search.getBack();
+				temp.setLink(search.getLink());
+				search.setLink(null);
+				search.setBack(null);
+				return;
 			}
 		}
 	}
