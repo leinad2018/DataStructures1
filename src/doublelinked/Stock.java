@@ -4,13 +4,13 @@ public class Stock {
 	private String company;
 	private boolean sell;
 	private int amount;
-	private double costPer;
+	private int costPer;
 
 	public Stock(String[] data){
 		company = data[0];
 		sell = data[1].equals("sell");
 		amount = Integer.parseInt(data[2]);
-		costPer = Integer.parseInt(data[3]) / amount;
+		costPer = Integer.parseInt(data[3]);
 	}
 	
 	public int getAmount(){
@@ -23,14 +23,13 @@ public class Stock {
 	
 	public double sellStock(int num){
 		if(num <= amount && !sell){
-			amount -= num;
 			return num * costPer;
 		}else{
 			return 0;
 		}
 	}
 	
-	public boolean getSell(){
+	public boolean isSell(){
 		return sell;
 	}
 	
