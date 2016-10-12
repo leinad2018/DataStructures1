@@ -1,4 +1,4 @@
-package doublelinked;
+package assign4;
 
 public class DLTest {
 
